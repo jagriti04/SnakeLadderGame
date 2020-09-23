@@ -11,7 +11,7 @@ public class SnakeLadder {
 		int player1Position = 0;              // when initial position = 0
 		
 		//UC4 players wins if final position is WIN_POSITION
-		while (player1Position <= WIN_POSITION) {
+		while (player1Position < WIN_POSITION) {
 			//System.out.println("Player one position: " + player1Position);
 			
 			int dieRollOutcome = ((int) Math.floor(Math.random() * 10 ) % 6) +1;		// number came on rolling dice
@@ -22,14 +22,17 @@ public class SnakeLadder {
 
 			if(playPositionOption == LADDER) {
 				player1Position += dieRollOutcome;
+				if (player1Position > WIN_POSITION) {					
+					player1Position -= dieRollOutcome;			//no change in position if position > WIN_POSITION
+				}
 			} else if (playPositionOption == SNAKE) {
 				player1Position -= dieRollOutcome;
 			}
 			if (player1Position < 0) {
 				player1Position = 0;				//game restarts if position moves below 0		
 			}
+
 		}
-		
 
 		System.out.println("Player wins!!! The final position of player 1: "+ player1Position);
 	}
