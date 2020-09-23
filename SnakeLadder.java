@@ -9,16 +9,19 @@ public class SnakeLadder {
 
 		//UC1 number of players = 1 and position = 0
 		int player1Position = 0;              // when initial position = 0
-		
-		//UC4 players wins if final position is WIN_POSITION
+		int totalDiceRolls = 0;						// to find the no. of times dice rolled
+
+
+		//UC5 players wins if final position is WIN_POSITION
 		while (player1Position < WIN_POSITION) {
-			//System.out.println("Player one position: " + player1Position);
+			
+			totalDiceRolls++;
+			
+			System.out.println("Current position of Player1: " + player1Position);
 			
 			int dieRollOutcome = ((int) Math.floor(Math.random() * 10 ) % 6) +1;		// number came on rolling dice
-			//System.out.println("The outcome on rolling the die: " + dieRollOutcome);
-
+			
 			int playPositionOption = ((int) Math.floor(Math.random() * 10 ) % 3);	//type- NO_PLAY, SNAKE or LADDER
-			//System.out.println("Type of option: " + playPositionOption);
 
 			if(playPositionOption == LADDER) {
 				player1Position += dieRollOutcome;
@@ -34,6 +37,7 @@ public class SnakeLadder {
 
 		}
 
+		System.out.println("Total no. of time dice rolled = " + totalDiceRolls);
 		System.out.println("Player wins!!! The final position of player 1: "+ player1Position);
 	}
 }
